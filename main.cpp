@@ -16,8 +16,18 @@ int main(void)
 
 /*    vsync hint*/
     SetWindowState(FLAG_VSYNC_HINT);
+    float ball_xaxis = GetScreenWidth()/2.0f;
+    float ball_yaxis = GetScreenHeight()/2.0f;
+    float ball_raidus = 10;
+    float ball_speed_xaxis = 10;
+    float ball_speed_yaxis = 10;
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
+//        before drarwing update the ball axis with speed
+            ball_xaxis += ball_speed_xaxis * GetFrameTime();
+            ball_yaxis += ball_speed_yaxis * GetFrameTime();
+
+
 
         BeginDrawing();
 
@@ -25,7 +35,7 @@ int main(void)
         DrawFPS(10,10);
 
 //        Drawing circle on to the middle of the screen
-        DrawCircle(GetScreenWidth()/2,GetScreenHeight()/2,10,WHITE);
+        DrawCircle((int)ball_xaxis,(int)ball_yaxis,ball_raidus,WHITE);
 //        Drawing a rectangle on the left side as an counter attact rod
 //        and making the y-axis subtracting to the half of the height of the rectangle to to appear as to the center
         int height_of_rectangle = 100;
