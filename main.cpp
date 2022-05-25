@@ -4,29 +4,39 @@ int main(void)
 {
     // Initialization
     //--------------------------------------------------------------------------------------
-    const int screenWidth = 800;
-    const int screenHeight = 450;
+    const int screenWidth = 500;
+    const int screenHeight = 500;
 
     InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
 
-    SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
+                   // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
 
     // Main game loop
+
+/*    vsync hint*/
+    SetWindowState(FLAG_VSYNC_HINT);
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
-        // Update
-        //----------------------------------------------------------------------------------
-        // TODO: Update your variables here
-        //----------------------------------------------------------------------------------
 
-        // Draw
-        //----------------------------------------------------------------------------------
         BeginDrawing();
 
-        ClearBackground(RAYWHITE);
+        ClearBackground(BLACK);
+        DrawFPS(10,10);
 
-        DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
+//        Drawing circle on to the middle of the screen
+        DrawCircle(GetScreenWidth()/2,GetScreenHeight()/2,10,WHITE);
+//        Drawing a rectangle on the left side as an counter attact rod
+//        and making the y-axis subtracting to the half of the height of the rectangle to to appear as to the center
+        int height_of_rectangle = 100;
+        DrawRectangle(10,GetScreenHeight()/2 - (height_of_rectangle/2),5,height_of_rectangle,WHITE);
+        DrawRectangle(GetScreenWidth() - 10-5,GetScreenHeight()/2 - (height_of_rectangle/2),5,height_of_rectangle,WHITE);
+
+
+
+
+
+
 
         EndDrawing();
         //----------------------------------------------------------------------------------
